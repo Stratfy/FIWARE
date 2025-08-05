@@ -12,9 +12,9 @@
 #include <PubSubClient.h>
 
 // Configurações - variáveis editáveis
-const char* default_SSID = "sua_rede_wifi"; // Nome da rede Wi-Fi
-const char* default_PASSWORD = "sua_senha_wifi"; // Senha da rede Wi-Fi
-const char* default_BROKER_MQTT = "ip_host_fiware"; // IP do Broker MQTT
+const char* default_SSID = "Wokwi-GUEST"; // Nome da rede Wi-Fi
+const char* default_PASSWORD = ""; // Senha da rede Wi-Fi
+const char* default_BROKER_MQTT = "172.212.225.211"; // IP do Broker MQTT
 const int default_BROKER_PORT = 1883; // Porta do Broker MQTT
 const char* default_TOPICO_SUBSCRIBE = "/TEF/lamp001/cmd"; // Tópico MQTT de escuta
 const char* default_TOPICO_PUBLISH_1 = "/TEF/lamp001/attrs"; // Tópico MQTT de envio de informações para Broker

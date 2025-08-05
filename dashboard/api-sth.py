@@ -7,7 +7,7 @@ from datetime import datetime
 import pytz
  
 # Constants for IP and port
-IP_ADDRESS = "46.17.108.113"
+IP_ADDRESS = "172.212.225.211"
 PORT_STH = 8666
 DASH_HOST = "0.0.0.0"  # Set this to "0.0.0.0" to allow access from any IP
  
@@ -129,4 +129,4 @@ def update_graph(stored_data):
     return {}
  
 if __name__ == '__main__':
-    app.run_server(debug=True, host=DASH_HOST, port=8050)
+    app.run(debug=True, host=DASH_HOST, port=8050)

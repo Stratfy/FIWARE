@@ -79,29 +79,64 @@ sudo apt install docker.io
 # Instalar Docker Compose
 sudo apt install docker-compose
 
+# Instalar Python 3 e pip (se necessário)
+sudo apt install python3 python3-pip
+
 # Verificar instalação
 docker --version
 docker-compose --version
+python3 --version
+pip3 --version
 ```
 
 ### Setup do Projeto
 
 ```bash
-# Clonar repositório original do FIWARE Descomplicado
-git clone https://github.com/fabiocabrini/fiware
-cd fiware
+# 1. Clonar repositório do grupo Stratfy
+git clone https://github.com/Stratfy/FIWARE
+cd FIWARE
 
-# Iniciar todos os serviços
-docker compose up -d
+# 2. Verificar se Docker está rodando
+sudo systemctl status docker
+sudo systemctl start docker
+sudo systemctl enable docker
 
-# Verificar status dos containers
-docker ps
+# 3. Adicionar usuário ao grupo docker (opcional)
+sudo usermod -aG docker $USER
+# Após este comando, faça logout e login novamente
 
-# Parar serviços
-docker compose down
+# 4. Configurar firewall UFW
+sudo ufw enable
+sudo ufw allow 22    # SSH
+sudo ufw allow 80    # HTTP
+sudo ufw allow 1026  # Orion Context Broker
+sudo ufw allow 1883  # MQTT Broker
+sudo ufw allow 4041  # IoT Agent MQTT
+sudo ufw allow 8666  # STH-Comet
+
+# 5. Verificar regras do firewall
+sudo ufw status verbose
+
+# 6. Executar FIWARE (navegar para pasta infrastructure)
+cd infrastructure
+sudo docker-compose up -d
+
+# 7. Verificar se containers estão rodando
+sudo docker ps
+
+# 8. Testar APIs FIWARE
+curl http://localhost:1026/version  # Orion Context Broker
+curl http://localhost:8666/version  # STH-Comet
+curl http://localhost:4041/version  # IoT Agent
+
+# 9. Para parar os serviços
+sudo docker-compose down
 ```
 
-**Observação:** Utiliza volumes Docker para persistência de dados em `/var/lib/docker/volumes/fiware_db-data/_data`
+**Observações importantes:**
+- **Azure NSG**: Configure regras inbound para portas 22, 1026, 1883, 4041, 8666, 80
+- **MongoDB (27017)**: Mantido interno por segurança - não expor publicamente
+- **Volumes Docker**: Dados persistem em `/var/lib/docker/volumes/infrastructure_mongo-historical-data/_data`
 
 ## Arquitetura do Sistema
 
@@ -190,10 +225,10 @@ Para alta disponibilidade, considere orquestradores como **Docker Swarm** ou **K
 ```bash
 # Instalar dependências do dashboard
 cd dashboard
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # Executar dashboard de luminosidade
-python api-sth.py
+python3 api-sth.py
 ```
 
 ---
