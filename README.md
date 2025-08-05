@@ -1,5 +1,3 @@
-# Projeto FIWARE - Grupo Stratfy
-
 <div align="center">
   <img src="https://i.imgur.com/tOXGuP9.png" alt="FIWARE Logo" width="400"/>
   
