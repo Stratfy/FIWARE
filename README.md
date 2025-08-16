@@ -66,7 +66,7 @@ MQTT Protocol              # Comunicação IoT
 - **CPU:** 1 vCPU mínimo
 - **RAM:** 1GB mínimo  
 - **Armazenamento:** 20GB disponível
-- **OS:** Ubuntu Server LTS (recomendado)
+- **OS:** Ubuntu Server 24.04 LTS (recomendado)
 
 #### Software Necessário
 ```bash
@@ -98,38 +98,15 @@ cd FIWARE
 
 # 2. Verificar se Docker está rodando
 sudo systemctl status docker
-sudo systemctl start docker
-sudo systemctl enable docker
 
-# 3. Adicionar usuário ao grupo docker (opcional)
-sudo usermod -aG docker $USER
-# Após este comando, faça logout e login novamente
-
-# 4. Configurar firewall UFW
-sudo ufw enable
-sudo ufw allow 22    # SSH
-sudo ufw allow 80    # HTTP
-sudo ufw allow 1026  # Orion Context Broker
-sudo ufw allow 1883  # MQTT Broker
-sudo ufw allow 4041  # IoT Agent MQTT
-sudo ufw allow 8666  # STH-Comet
-
-# 5. Verificar regras do firewall
-sudo ufw status verbose
-
-# 6. Executar FIWARE (navegar para pasta infrastructure)
+# 3. Executar FIWARE (navegar para pasta infrastructure)
 cd infrastructure
 sudo docker-compose up -d
 
-# 7. Verificar se containers estão rodando
+# 4. Verificar se containers estão rodando
 sudo docker ps
 
-# 8. Testar APIs FIWARE
-curl http://localhost:1026/version  # Orion Context Broker
-curl http://localhost:8666/version  # STH-Comet
-curl http://localhost:4041/version  # IoT Agent
-
-# 9. Para parar os serviços
+# 5. Para parar os serviços
 sudo docker-compose down
 ```
 
