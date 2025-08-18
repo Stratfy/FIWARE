@@ -10,6 +10,16 @@
   [![Python](https://img.shields.io/badge/Python-Dash-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://dash.plotly.com/)
 </div>
 
+## 🎥 Recursos de Setup
+
+### Setup Completo: Azure VM + FIWARE
+**[Criando VM na Azure e Instalando FIWARE](https://youtu.be/usu_GKuYyC0)** - Tutorial passo a passo que ensina:
+- Como criar uma máquina virtual na Microsoft Azure
+- Como instalar e configurar o FIWARE dentro da VM
+- Configurações de rede e portas necessárias
+
+---
+
 ## Sobre o Projeto
 
 Este repositório foi criado para **colocar em prática o uso do FIWARE**, conforme apresentado pelo **Fábio Henrique Cabrini**, pesquisador oficial do projeto FIWARE. Utilizamos o **FIWARE Descomplicado**, uma modificação desenvolvida pelo pesquisador para facilitar a implementação e experimentação com a plataforma em ambiente acadêmico.
